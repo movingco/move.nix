@@ -6,11 +6,23 @@
 
 
   outputs = { self, nixpkgs, flake-utils }:
-    flake-utils.lib.eachDefaultSystem (system:
-      let
-        pkgs = import nixpkgs { inherit system; };
-      in
-      {
-        devShell = import ./shell.nix { inherit pkgs; };
-      });
+    let
+      overlay = import ./overlay.nix;
+      systems = flake-utils.lib.eachDefaultSystem (system:
+        let
+          pkgs = import nixpkgs {
+            inherit system;
+            overlays = [ overlay ];
+          };
+        in
+        {
+          packages = {
+            inherit (pkgs) cargo-hakari;
+          };
+          devShell = import ./shell.nix { inherit pkgs; };
+        });
+    in
+    systems // {
+      overlays.default = overlay;
+    };
 }

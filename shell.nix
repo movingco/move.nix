@@ -2,5 +2,5 @@
 
 with pkgs;
 mkShell {
-  packages = [ nixpkgs-fmt ];
+  packages = [ nixpkgs-fmt cargo-hakari ];
 }
