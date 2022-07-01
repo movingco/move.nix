@@ -2,5 +2,9 @@
 
 with pkgs;
 mkShell {
-  packages = [ nixpkgs-fmt cargo-hakari ];
+  packages = [
+    nixpkgs-fmt
+    cargo-hakari
+    # aptos-cli
+  ];
 }

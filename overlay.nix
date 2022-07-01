@@ -7,4 +7,8 @@ self: super: rec {
     pkgs = super;
     inherit cargo-hakari;
   };
+
+  aptos-cli = import ./packages/aptos-cli.nix {
+    pkgs = super;
+  };
 }

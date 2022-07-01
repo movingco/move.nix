@@ -17,7 +17,7 @@
         in
         {
           packages = {
-            inherit (pkgs) cargo-hakari aptos-devenv;
+            inherit (pkgs) cargo-hakari aptos-devenv aptos-cli;
           };
           devShell = import ./shell.nix { inherit pkgs; };
         });
