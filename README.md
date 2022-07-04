@@ -2,7 +2,7 @@
 
 A Nix Flake for the Move ecosystem.
 
-# Installing Aptos
+## Installing Aptos
 
 Aptos is not yet packaged in this repo due to Nix's Cargo integration not being able to have multiple versions of the same dependency. However, you can still install it by loading the libraries into the environment. Run the following commands:
 
