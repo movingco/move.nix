@@ -12,14 +12,12 @@
         let
           pkgs = import nixpkgs {
             inherit system;
-            overlays = [ overlay ];
           };
+          packages = import ./packages { inherit pkgs; };
         in
         {
-          packages = {
-            inherit (pkgs) cargo-hakari aptos-devenv aptos-cli;
-          };
-          devShell = import ./shell.nix { inherit pkgs; };
+          inherit packages;
+          devShell = import ./shell.nix { pkgs = (pkgs // packages); };
         });
     in
     systems // {

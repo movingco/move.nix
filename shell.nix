@@ -6,5 +6,6 @@ mkShell {
     nixpkgs-fmt
     cargo-hakari
     # aptos-cli
+    move-cli-address32
   ];
 }
