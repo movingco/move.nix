@@ -32,6 +32,9 @@ jobs:
         package:
           - cargo-hakari
           - aptos-devenv
+          - move-cli
+          - move-cli-aptos
+          - move-cli-sui
     steps:
       - uses: actions/checkout@v3
       - uses: cachix/install-nix-action@v17

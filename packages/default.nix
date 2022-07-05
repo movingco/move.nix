@@ -21,5 +21,7 @@ rec {
         ++ (pkgs.lib.optionals pkgs.stdenv.isAarch64 [ System ])));
   };
 
-  move-cli-address32 = move-cli.override { buildFeatures = [ "address32" ]; };
+  move-cli-sui = move-cli.override { buildFeatures = [ "address20" ]; };
+
+  move-cli-aptos = move-cli.override { buildFeatures = [ "address32" ]; };
 }
