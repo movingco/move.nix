@@ -39,7 +39,10 @@ rustPlatform.buildRustPackage rec {
   BINDGEN_EXTRA_CLANG_ARGS =
     "-isystem ${libclang.lib}/lib/clang/${lib.getVersion clang}/include";
 
-  doCheck = false;
+  # Used by build.rs in the rocksdb-sys crate. If we don't set these, it would
+  # try to build RocksDB from source.
+  ROCKSDB_INCLUDE_DIR = "${rocksdb}/include";
+  ROCKSDB_LIB_DIR = "${rocksdb}/lib";
 
   nativeBuildInputs = [
     pkg-config
@@ -48,12 +51,12 @@ rustPlatform.buildRustPackage rec {
     clang
 
     rustfmt
+    rocksdb
   ];
 
   # see: https://github.com/aptos-labs/aptos-core/blob/36dfc6499dd576d7d2ba883b66161510ff5cbe6b/.circleci/config.yml#L241
   buildInputs = [
     libclang
-    rocksdb
     postgresql # libpq
     openssl # libssl
 
