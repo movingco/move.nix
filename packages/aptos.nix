@@ -1,10 +1,25 @@
-{ pkgs, cargo-hakari }:
+{ lib
+, cargo-hakari
+, rustPlatform
+, fetchFromGitHub
+, libclang
+, clang
+, pkg-config
+, rustc
+, cargo
+, rocksdb
+, rustfmt
+, postgresql
+, openssl
+, stdenv
+, darwin
+, libiconv
+}:
 
-with pkgs;
 rustPlatform.buildRustPackage rec {
   pname = "aptos";
-  # devnet
-  version = "devnet-for-nix";
+  # https://github.com/movingco/aptos-core/tree/devnet-for-nix
+  version = "a669724b5b3df1c2d2b1a6b25c31f4cad5177229";
 
   src = fetchFromGitHub {
     owner = "movingco";
@@ -13,18 +28,11 @@ rustPlatform.buildRustPackage rec {
     sha256 = "sha256-i2czGZSZHMi0Ejqeh9X6n8ydpkikgRyOOGNHMEKbtmE=";
   };
 
-  cargoSha256 = "sha256-s2fTCDH/uE10QSZRrCq9iq5LaGypTZHxp49AT7dJwlw=";
+  cargoSha256 = "sha256-bvUEaUsw+lO0leaCAztWknsJneJIHikeT7x2r78olOo=";
   verifyCargoDeps = true;
 
-  # Sets `-j 1`, which is required to avoid a deadlock when building the crate.
-  # The `move-package` crate has some sort of lock which breaks the build if this
-  # flag is not set.
-  # NIX_BUILD_CORES = 1;
-  cargoBuildFlags = [ "--bin=aptos" ];
-
-  RUST_BACKTRACE = "full";
   PKG_CONFIG_PATH = "${openssl.dev}/lib/pkgconfig";
-  RUST_SRC_PATH = "${rust.packages.stable.rustPlatform.rustLibSrc}";
+  RUST_SRC_PATH = "${rustPlatform.rustLibSrc}";
 
   # see https://github.com/NixOS/nixpkgs/issues/52447#issuecomment-852079285
   LIBCLANG_PATH = "${libclang.lib}/lib";
@@ -33,7 +41,7 @@ rustPlatform.buildRustPackage rec {
 
   doCheck = false;
 
-  nativeBuildInputs = with pkgs; [
+  nativeBuildInputs = [
     pkg-config
     rustc
     cargo
@@ -43,7 +51,7 @@ rustPlatform.buildRustPackage rec {
   ];
 
   # see: https://github.com/aptos-labs/aptos-core/blob/36dfc6499dd576d7d2ba883b66161510ff5cbe6b/.circleci/config.yml#L241
-  buildInputs = with pkgs; [
+  buildInputs = [
     libclang
     rocksdb
     postgresql # libpq
@@ -55,4 +63,10 @@ rustPlatform.buildRustPackage rec {
       ++ (with darwin.apple_sdk.frameworks; [ DiskArbitration Foundation ]))
   );
   strictDeps = true;
+
+  meta = with lib; {
+    description = "A layer 1 for everyone!";
+    homepage = "https://aptoslabs.com";
+    license = licenses.asl20;
+  };
 }

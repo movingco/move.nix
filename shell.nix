@@ -5,7 +5,7 @@ mkShell {
   packages = [
     nixpkgs-fmt
     cargo-hakari
-    aptos-cli
+    aptos
     move-cli-aptos
   ];
 }
