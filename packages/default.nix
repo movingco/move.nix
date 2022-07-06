@@ -10,7 +10,7 @@ rec {
   };
 
   aptos-cli = import ./aptos-cli.nix {
-    inherit pkgs;
+    inherit pkgs cargo-hakari;
   };
 
   move-cli = pkgs.callPackage ./move-cli.nix {
