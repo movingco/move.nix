@@ -3,15 +3,17 @@
 with pkgs;
 rustPlatform.buildRustPackage rec {
   pname = "aptos";
-  version = "0.1.4";
+  # devnet
+  version = "devnet-for-nix";
 
-  src = fetchCrate {
-    pname = "aptos";
-    inherit version;
-    sha256 = "sha256-1pjdYp2AOVyhkNwcK2E4j8NAYAbnTjNwVlgs/BXoItY=";
+  src = fetchFromGitHub {
+    owner = "movingco";
+    repo = "aptos-core";
+    rev = version;
+    sha256 = "sha256-i2czGZSZHMi0Ejqeh9X6n8ydpkikgRyOOGNHMEKbtmE=";
   };
 
-  cargoSha256 = "sha256-mBQInRm6T4A/d9jcz8khjb7rvstUqKcIVQLL8+vNIhY=";
+  cargoSha256 = "sha256-s2fTCDH/uE10QSZRrCq9iq5LaGypTZHxp49AT7dJwlw=";
   verifyCargoDeps = true;
 
   # Sets `-j 1`, which is required to avoid a deadlock when building the crate.
@@ -36,6 +38,8 @@ rustPlatform.buildRustPackage rec {
     rustc
     cargo
     clang
+
+    rustfmt
   ];
 
   # see: https://github.com/aptos-labs/aptos-core/blob/36dfc6499dd576d7d2ba883b66161510ff5cbe6b/.circleci/config.yml#L241
