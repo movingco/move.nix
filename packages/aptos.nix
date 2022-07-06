@@ -34,6 +34,9 @@ rustPlatform.buildRustPackage rec {
   PKG_CONFIG_PATH = "${openssl.dev}/lib/pkgconfig";
   RUST_SRC_PATH = "${rustPlatform.rustLibSrc}";
 
+  # skip tests because they're really slow
+  doCheck = false;
+
   # see https://github.com/NixOS/nixpkgs/issues/52447#issuecomment-852079285
   LIBCLANG_PATH = "${libclang.lib}/lib";
   BINDGEN_EXTRA_CLANG_ARGS =
