@@ -12,18 +12,18 @@ with rustPlatform;
 
 buildRustPackage rec {
   pname = "move";
-  version = "c2ced3f9571176bd1df5946c1cdb8f40bbdb18d4";
+  version = "84f3819de919bb74249942a478cb01d10c52c1b6";
 
   src = fetchFromGitHub {
     owner = "move-language";
     repo = "move";
     rev = version;
-    sha256 = "sha256-24qIPFX5fUi7AEdYT4qfX+BeTFrreGloII2tljOwDm0=";
+    sha256 = "sha256-sNqpXD8X3QWFNmk6aeHevRaiyfwe9DDQOAIavKz4s5I=";
   };
 
   inherit buildFeatures;
 
-  cargoSha256 = "sha256-cuoQDOBhEzrDUaJOqJzDgb3FNyU7D1Rp5wOzZJp5KoI=";
+  cargoSha256 = "sha256-NkdCujbfqcPiyPlhRx1J+aL3k2M1NeIzXlP+kf2xPT8=";
   verifyCargoDeps = true;
 
   nativeBuildInputs = [ pkgconfig ];
@@ -37,6 +37,6 @@ buildRustPackage rec {
       "CLI frontend for the Move compiler and VM";
     homepage = "https://diem.com";
 
-    license = licenses.mit;
+    license = licenses.asl20;
   };
 }
