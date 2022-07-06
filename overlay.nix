@@ -1,1 +1,1 @@
-self: super: (import ./packages { pkgs = super; })
+final: prev: (import ./packages { pkgs = prev; })

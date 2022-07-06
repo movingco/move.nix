@@ -14,10 +14,11 @@
             inherit system;
           };
           packages = import ./packages { inherit pkgs; };
+          devShell = import ./shell.nix { pkgs = (pkgs // packages); };
         in
         {
           inherit packages;
-          devShell = import ./shell.nix { pkgs = (pkgs // packages); };
+          devShells.default = devShell;
         });
     in
     systems // {
