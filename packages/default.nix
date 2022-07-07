@@ -11,9 +11,10 @@ rec {
 
   aptos = import ./aptos.nix {
     inherit cargo-hakari;
-    inherit (pkgs) lib rustPlatform fetchFromGitHub libclang clang
+    inherit (pkgs) lib rustPlatform fetchFromGitHub
       pkg-config rustc cargo rustfmt
       postgresql openssl stdenv darwin libiconv;
+    inherit (pkgs.llvmPackages_12) clang llvm libclang;
     rocksdb = pkgs.rocksdb_6_23;
   };
 

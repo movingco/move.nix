@@ -1,4 +1,5 @@
 { lib
+, llvm
 , cargo-hakari
 , rustPlatform
 , fetchFromGitHub
@@ -37,6 +38,14 @@ rustPlatform.buildRustPackage rec {
   # skip tests because they're really slow
   doCheck = false;
 
+  # Needed to get openssl-sys to use pkg-config.
+  OPENSSL_NO_VENDOR = 1;
+  OPENSSL_LIB_DIR = "${lib.getLib openssl}/lib";
+  OPENSSL_DIR = "${lib.getDev openssl}";
+
+  # ensure we are using LLVM to compile
+  LLVM_CONFIG_PATH = "${llvm}/bin/llvm-config";
+
   # see https://github.com/NixOS/nixpkgs/issues/52447#issuecomment-852079285
   LIBCLANG_PATH = "${libclang.lib}/lib";
   BINDGEN_EXTRA_CLANG_ARGS =
@@ -54,12 +63,13 @@ rustPlatform.buildRustPackage rec {
     clang
 
     rustfmt
-    rocksdb
+    llvm
   ];
 
   # see: https://github.com/aptos-labs/aptos-core/blob/36dfc6499dd576d7d2ba883b66161510ff5cbe6b/.circleci/config.yml#L241
   buildInputs = [
     libclang
+    rocksdb
     postgresql # libpq
     openssl # libssl
 
