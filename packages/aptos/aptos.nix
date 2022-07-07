@@ -8,7 +8,7 @@
 , pkg-config
 , rustc
 , cargo
-, rocksdb
+, rocksdb_6_23
 , rustfmt
 , postgresql
 , openssl
@@ -17,19 +17,13 @@
 , libiconv
 }:
 
+{ pname ? "aptos", src, version, cargoSha256, buildAndTestSubdir ? null }:
+
+let
+  rocksdb = rocksdb_6_23;
+in
 rustPlatform.buildRustPackage rec {
-  pname = "aptos";
-  # https://github.com/movingco/aptos-core/tree/devnet-for-nix
-  version = "a669724b5b3df1c2d2b1a6b25c31f4cad5177229";
-
-  src = fetchFromGitHub {
-    owner = "movingco";
-    repo = "aptos-core";
-    rev = version;
-    sha256 = "sha256-i2czGZSZHMi0Ejqeh9X6n8ydpkikgRyOOGNHMEKbtmE=";
-  };
-
-  cargoSha256 = "sha256-bvUEaUsw+lO0leaCAztWknsJneJIHikeT7x2r78olOo=";
+  inherit pname buildAndTestSubdir src version cargoSha256;
   verifyCargoDeps = true;
 
   PKG_CONFIG_PATH = "${openssl.dev}/lib/pkgconfig";

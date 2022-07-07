@@ -32,6 +32,7 @@ jobs:
           - cargo-hakari
           - aptos-devenv
           - aptos
+          - aptos-cli
           - move-cli
           - move-cli-aptos
           - move-cli-sui
