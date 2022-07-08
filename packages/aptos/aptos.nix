@@ -1,10 +1,8 @@
 { lib
-, llvm
+, llvmPackages_12
 , cargo-hakari
 , rustPlatform
 , fetchFromGitHub
-, libclang
-, clang
 , pkg-config
 , rustc
 , cargo
@@ -22,6 +20,9 @@
 let
   rocksdb = rocksdb_6_23;
 in
+with {
+  inherit (llvmPackages_12) llvm clang libclang;
+};
 rustPlatform.buildRustPackage rec {
   inherit pname buildAndTestSubdir src version cargoSha256;
   verifyCargoDeps = true;
@@ -62,7 +63,6 @@ rustPlatform.buildRustPackage rec {
 
   # see: https://github.com/aptos-labs/aptos-core/blob/36dfc6499dd576d7d2ba883b66161510ff5cbe6b/.circleci/config.yml#L241
   buildInputs = [
-    libclang
     rocksdb
     postgresql # libpq
     openssl # libssl
