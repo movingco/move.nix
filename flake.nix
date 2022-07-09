@@ -4,7 +4,6 @@
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
   inputs.flake-utils.url = "github:numtide/flake-utils";
 
-
   outputs = { self, nixpkgs, flake-utils }:
     let
       overlay = import ./overlay.nix;
@@ -12,12 +11,14 @@
         let
           pkgs = import nixpkgs {
             inherit system;
+            overlays = [ overlay ];
           };
-          packages = import ./packages { inherit pkgs; };
-          devShell = import ./shell.nix { pkgs = (pkgs // packages); };
+          devShell = import ./shell.nix { inherit pkgs; };
         in
         {
-          inherit packages;
+          packages = {
+            inherit (pkgs) cargo-hakari aptos-devenv aptos aptos-cli move-cli move-cli-sui move-cli-aptos;
+          };
           devShells.default = devShell;
         });
     in
