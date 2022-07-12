@@ -17,7 +17,7 @@ buildAptos rec {
     sha256 = "sha256-1gj5jZ59cjeJocUaloJ1aH2c6iQAKPi3hzRaLruakJk=";
   };
 
-  cargoSha256 = "sha256-paR5KXvUVbQQeI0l92Qiav8RX6ok2IzWvcm/qWEkLVI=";
+  cargoSha256 = "sha256-lzu9MtgPm0+jd9Q60MwBPOcYvo2jAPTPLz6pAglK0KI=";
 
   buildAndTestSubdir = "crates/aptos";
 }
