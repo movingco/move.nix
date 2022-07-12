@@ -1,16 +1,18 @@
 { pkgs }:
-rec {
+let
   cargo-hakari = pkgs.callPackage ./cargo-hakari.nix { };
 
+  aptos-devnet = pkgs.callPackage ./aptos/aptos-devnet.nix {
+    inherit cargo-hakari;
+  };
+in
+rec {
+  inherit cargo-hakari;
+
+  aptos = aptos-devnet.full;
+  aptos-cli = aptos-devnet.cli;
+
   aptos-devenv = pkgs.callPackage ./aptos-devenv.nix {
-    inherit cargo-hakari;
-  };
-
-  aptos = pkgs.callPackage ./aptos/full.nix {
-    inherit cargo-hakari;
-  };
-
-  aptos-cli = pkgs.callPackage ./aptos/cli.nix {
     inherit cargo-hakari;
   };
 
