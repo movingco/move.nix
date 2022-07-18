@@ -11,6 +11,7 @@ rec {
 
   aptos = aptos-devnet.full;
   aptos-cli = aptos-devnet.cli;
+  af-cli = aptos-devnet.af-cli;
 
   aptos-devenv = pkgs.callPackage ./aptos-devenv.nix {
     inherit cargo-hakari;

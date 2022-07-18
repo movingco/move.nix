@@ -32,4 +32,10 @@ in
     pname = "aptos";
     cargoSha256 = "sha256-awAZECBHFfKNVwvPON0moglSy6MGT/tSH1cF8K4vwgI=";
   };
+
+  af-cli = buildAptosDevnet {
+    pname = "af-cli";
+    cargoSha256 = "sha256-0Qzos2xOiiDOZC27jJ3TlM8hFr6XqjpfFGmfMfvQQJQ=";
+    buildAndTestSubdir = "aptos-move/af-cli";
+  };
 }
