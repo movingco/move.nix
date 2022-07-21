@@ -30,7 +30,7 @@ in
 
   full = buildAptosDevnet {
     pname = "aptos";
-    cargoSha256 = "sha256-dtxyhRKwpT1oPm1aO2e15IJAIL/m2RqfdueXS+oR71w=";
+    cargoSha256 = "sha256-eaVBwhD3aWw3bak/3mMLfJ1GbPR5J5fdwA6PyBfDmmw=";
   };
 
   af-cli = buildAptosDevnet {
