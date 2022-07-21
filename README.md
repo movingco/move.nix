@@ -18,6 +18,15 @@ If you want a shell with Aptos installed, you may run the following:
 nix develop github:movingco/move.nix#aptos
 ```
 
+## Notes
+
+When building Aptos locally, you may encounter an error around a lock. To get around this,
+run the following command before any Aptos build:
+
+```
+sudo rm /tmp/*.lock
+```
+
 ## License
 
 Apache 2.0
