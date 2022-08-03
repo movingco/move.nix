@@ -28,5 +28,9 @@
     in
     systems // {
       overlays.default = overlay;
+      templates.aptos = {
+        path = ./templates/aptos;
+        description = "A simple Nix Flake for developing in Aptos Move.";
+      };
     };
 }
