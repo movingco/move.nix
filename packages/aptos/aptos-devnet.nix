@@ -9,7 +9,7 @@ let
     buildAptos rec {
       inherit pname;
       # https://github.com/movingco/aptos-core/tree/devnet-nix-2022-08-03
-      version = "7296f138e11113fab6a1e193fc3f18fa7d08bd3e";
+      version = "2104dd2ac477fedbb180e6ef866f5ae527dee8ab";
 
       src = fetchFromGitHub {
         owner = "movingco";
