@@ -20,7 +20,10 @@
             inherit (pkgs) cargo-hakari aptos-devenv aptos aptos-cli
               move-cli move-cli-sui move-cli-aptos;
           };
-          devShells.default = devShell;
+          devShells = {
+            default = devShell;
+            aptos = import ./shells/aptos.nix { inherit pkgs; };
+          };
         });
     in
     systems // {
