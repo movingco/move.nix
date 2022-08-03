@@ -10,6 +10,14 @@ You can add the Moving Company's Cachix binary cache like so:
 cachix use m
 ```
 
+## Templates
+
+To create a new Aptos Move project, run the following command:
+
+```bash
+nix flake init --template github:movingco/move.nix#aptos
+```
+
 ### Example
 
 If you want a shell with Aptos installed, you may run the following:
