@@ -9,13 +9,13 @@ let
     buildAptos rec {
       inherit pname;
       # https://github.com/movingco/aptos-core/tree/devnet-nix-2022-08-03
-      version = "2104dd2ac477fedbb180e6ef866f5ae527dee8ab";
+      version = "1fb4e5b73d09982cf41ce20c8533255c8f578965";
 
       src = fetchFromGitHub {
         owner = "movingco";
         repo = "aptos-core";
         rev = version;
-        sha256 = "sha256-IMU2BA+N187DR22nIoQntZklVuh30yPMN2p9KjLO8wE=";
+        sha256 = "sha256-IMU2BA+N187DR23nIoQntZklVuh30yPMN2p9KjLO8wE=";
       };
 
       inherit cargoSha256 buildAndTestSubdir;
