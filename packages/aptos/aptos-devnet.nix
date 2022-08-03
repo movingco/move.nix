@@ -15,7 +15,7 @@ let
         owner = "movingco";
         repo = "aptos-core";
         rev = version;
-        sha256 = "sha256-9Atz9eeDeD9D5V6zotpR/r5Gf298Ukc7HgEwESuIreE=";
+        sha256 = "sha256-IMU2BA+N187DR22nIoQntZklVuh30yPMN2p9KjLO8wE=";
       };
 
       inherit cargoSha256 buildAndTestSubdir;
