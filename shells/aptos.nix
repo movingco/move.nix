@@ -25,15 +25,14 @@ stdenv.mkDerivation
       cvc5
       dotnet-sdk
     ]);
-
+  } // (if installProver then {
+    LD_LIBRARY_PATH = "${icu}/lib";
+    Z3_EXE = "${z3}/bin/z3";
+    DOTNET_ROOT = "${dotnet-sdk}";
     shellHook = ''
       export BOOGIE_EXE=$HOME/.dotnet/tools/boogie
       if ! [ -f "$BOOGIE_EXE" ]; then
         dotnet tool install --global boogie
       fi
     '';
-  } // (if installProver then {
-    LD_LIBRARY_PATH = "${icu}/lib";
-    Z3_EXE = "${z3}/bin/z3";
-    DOTNET_ROOT = "${dotnet-sdk}";
   } else { }))
