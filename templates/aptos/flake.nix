@@ -1,4 +1,6 @@
 {
+  description = "A simple Nix Flake for developing in Aptos Move.";
+
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     flake-utils.url = "github:numtide/flake-utils";
