@@ -33,7 +33,6 @@ jobs:
           - aptos-devenv
           - aptos
           - aptos-cli
-          - af-cli
           - move-cli
           - move-cli-aptos
           - move-cli-sui
