@@ -18,7 +18,7 @@
         {
           packages = {
             inherit (pkgs) cargo-hakari aptos-devenv aptos aptos-cli
-              af-cli move-cli move-cli-sui move-cli-aptos;
+              move-cli move-cli-sui move-cli-aptos;
           };
           devShells.default = devShell;
         });
