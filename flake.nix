@@ -17,12 +17,13 @@
         in
         {
           packages = {
-            inherit (pkgs) cargo-hakari aptos-devenv aptos aptos-cli
+            inherit (pkgs) cargo-hakari aptos-devenv aptos aptos-cli sui
               move-cli move-cli-sui move-cli-aptos;
           };
           devShells = {
             default = devShell;
             aptos = import ./shells/aptos.nix { inherit pkgs; };
+            sui = import ./shells/sui.nix { inherit pkgs; };
           };
         });
     in
