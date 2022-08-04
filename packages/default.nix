@@ -5,12 +5,16 @@ let
   aptos-devnet = pkgs.callPackage ./aptos/aptos-devnet.nix {
     inherit cargo-hakari;
   };
+
+  sui-devnet = pkgs.callPackage ./sui/sui-devnet.nix { };
 in
 rec {
   inherit cargo-hakari;
 
   aptos = aptos-devnet.full;
   aptos-cli = aptos-devnet.cli;
+
+  sui = sui-devnet.full;
 
   aptos-devenv = pkgs.callPackage ./aptos-devenv.nix {
     inherit cargo-hakari;
