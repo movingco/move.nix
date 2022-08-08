@@ -14,7 +14,13 @@
 , libiconv
 }:
 
-{ pname ? "aptos", src, version, cargoSha256, buildAndTestSubdir ? null }:
+{ pname ? "aptos"
+, src
+, version
+, cargoSha256
+, buildAndTestSubdir ? null
+, cargoBuildFlags ? [ ]
+}:
 
 let
   rocksdb = rocksdb_6_23;
@@ -23,7 +29,7 @@ with {
   inherit (llvmPackages_12) llvm clang libclang;
 };
 rustPlatform.buildRustPackage rec {
-  inherit pname buildAndTestSubdir src version cargoSha256;
+  inherit pname buildAndTestSubdir cargoBuildFlags src version cargoSha256;
   verifyCargoDeps = true;
 
   PKG_CONFIG_PATH = "${openssl.dev}/lib/pkgconfig";
