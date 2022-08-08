@@ -2,12 +2,12 @@
 
 rustPlatform.buildRustPackage rec {
   pname = "cargo-hakari";
-  version = "0.9.4";
+  version = "0.9.14";
 
   src = fetchCrate {
     inherit pname version;
-    sha256 = "sha256-5ouZqTAzi+2ELYPbaLVOgwWGrABIEz5dYOiop+mFR9o=";
+    sha256 = "sha256-C4UBvxGZDpGfYokTzHQNkUkZqBNuKbE4pzOJ04sTDoY=";
   };
 
-  cargoHash = "sha256-zxoNNox22AU+vAdQGxclqMffp8K9rXFr1hIf9d7NMfg=";
+  cargoHash = "sha256-eQrRBmlP206MKDlXxcJ64jD6/6mv3V/sv9TsybIx+8Q=";
 }

@@ -1,10 +1,7 @@
-{ callPackage, fetchFromGitHub, cargo-hakari }:
-
+{ callPackage, fetchFromGitHub }:
 
 let
-  buildAptos = callPackage ./aptos.nix {
-    inherit cargo-hakari;
-  };
+  buildAptos = callPackage ./aptos.nix { };
   buildAptosDevnet = { pname, cargoSha256, buildAndTestSubdir ? null }:
     buildAptos rec {
       inherit pname;

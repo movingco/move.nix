@@ -1,6 +1,5 @@
 { lib
 , llvmPackages_12
-, cargo-hakari
 , rustPlatform
 , fetchFromGitHub
 , pkg-config
@@ -66,8 +65,6 @@ rustPlatform.buildRustPackage rec {
     rocksdb
     postgresql # libpq
     openssl # libssl
-
-    cargo-hakari # for workspace hack
   ] ++ (
     lib.optional stdenv.isDarwin ([ libiconv ]
       ++ (with darwin.apple_sdk.frameworks; [ DiskArbitration Foundation ]))

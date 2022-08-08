@@ -1,12 +1,8 @@
 { pkgs }:
 let
   cargo-hakari = pkgs.callPackage ./cargo-hakari.nix { };
-
-  aptos-devnet = pkgs.callPackage ./aptos/aptos-devnet.nix {
-    inherit cargo-hakari;
-  };
-
   sui-devnet = pkgs.callPackage ./sui/sui-devnet.nix { };
+  aptos-devnet = pkgs.callPackage ./aptos/aptos-devnet.nix { };
 in
 rec {
   inherit cargo-hakari;
