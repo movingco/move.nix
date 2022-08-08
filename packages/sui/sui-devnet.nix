@@ -37,7 +37,7 @@ in
 
   gateway = buildSuiDevnet {
     pname = "sui-gateway";
-    cargoSha256 = "sha256-41NGUdYjLQ3NumUgM1qY2+PjALzHKRLeLMc3ZwLgiFs=";
+    cargoSha256 = "sha256-Opv002a1ifDz/SXIv7N4CLCpLkzreDiJHDBQGkpKCW0=";
     buildAndTestSubdir = "crates/sui-gateway";
     cargoBuildFlags = [ "--package" "sui-gateway" ];
   };
