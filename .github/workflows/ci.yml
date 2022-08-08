@@ -34,6 +34,8 @@ jobs:
           - aptos
           - aptos-cli
           - sui
+          - sui-cli
+          - sui-gateway
           - move-cli
           - move-cli-aptos
           - move-cli-sui
