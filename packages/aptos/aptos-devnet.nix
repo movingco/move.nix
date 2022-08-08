@@ -10,14 +10,14 @@ let
     }:
     buildAptos rec {
       inherit pname;
-      # https://github.com/movingco/aptos-core/tree/devnet-nix-2022-08-03
-      version = "1fb4e5b73d09982cf41ce20c8533255c8f578965";
+      # https://github.com/movingco/aptos-core/tree/devnet-nix-2022-08-08
+      version = "a78c14adf6661723469c430b50df40380d6d66bd";
 
       src = fetchFromGitHub {
         owner = "movingco";
         repo = "aptos-core";
         rev = version;
-        sha256 = "sha256-3eXgDh+MVSDRDD++M/QMY+U4xS5Drs6u0TCTaRDBmrw=";
+        sha256 = "sha256-bYnlzry9wH6wAdBFEdqfUgrP6CzyhV71v/lP1ETexIU=";
       };
 
       inherit cargoSha256 buildAndTestSubdir cargoBuildFlags;
@@ -26,13 +26,13 @@ in
 {
   cli = buildAptosDevnet {
     pname = "aptos-cli";
-    cargoSha256 = "sha256-z1Qeu4/Hn0RpXfbLjTRAxy2fuWxJjagj0o6ZDr7CAkE=";
+    cargoSha256 = "sha256-jnMrtl2Nl4fvAdF7BffW3fspOsgQptNi7K08u0VT+/8=";
     buildAndTestSubdir = "crates/aptos";
     cargoBuildFlags = [ "--package" "aptos" ];
   };
 
   full = buildAptosDevnet {
     pname = "aptos";
-    cargoSha256 = "sha256-SvAG8TaIRYW0Eq9GwQaZvqdDyCfhE79wdIX9HyT0ir4=";
+    cargoSha256 = "sha256-1xjx55CcW88wFdevgnJF4y1wnspu9O3ihrOGRWihNl8=";
   };
 }

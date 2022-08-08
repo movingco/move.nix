@@ -5,7 +5,7 @@
 , pkg-config
 , rustc
 , cargo
-, rocksdb_6_23
+, rocksdb
 , rustfmt
 , postgresql
 , openssl
@@ -22,9 +22,6 @@
 , cargoBuildFlags ? [ ]
 }:
 
-let
-  rocksdb = rocksdb_6_23;
-in
 with {
   inherit (llvmPackages_12) llvm clang libclang;
 };

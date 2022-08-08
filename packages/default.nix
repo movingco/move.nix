@@ -9,6 +9,7 @@ rec {
 
   aptos = aptos-devnet.full;
   aptos-cli = aptos-devnet.cli;
+  af-cli = aptos-devnet.af-cli;
 
   sui = sui-devnet.full;
   sui-cli = sui-devnet.cli;

@@ -17,8 +17,12 @@
         in
         {
           packages = {
-            inherit (pkgs) cargo-hakari aptos-devenv
-              aptos aptos-cli sui sui-cli sui-gateway
+            inherit (pkgs) cargo-hakari
+              # aptos
+              aptos-devenv aptos aptos-cli af-cli
+              # sui
+              sui sui-cli sui-gateway
+              # move
               move-cli move-cli-sui move-cli-aptos;
           };
           devShells = {
