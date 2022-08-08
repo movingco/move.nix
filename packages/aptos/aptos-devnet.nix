@@ -1,11 +1,13 @@
-{ callPackage, fetchFromGitHub, cargo-hakari }:
-
+{ callPackage, fetchFromGitHub }:
 
 let
-  buildAptos = callPackage ./aptos.nix {
-    inherit cargo-hakari;
-  };
-  buildAptosDevnet = { pname, cargoSha256, buildAndTestSubdir ? null }:
+  buildAptos = callPackage ./aptos.nix { };
+  buildAptosDevnet =
+    { pname
+    , cargoSha256
+    , buildAndTestSubdir ? null
+    , cargoBuildFlags ? [ ]
+    }:
     buildAptos rec {
       inherit pname;
       # https://github.com/movingco/aptos-core/tree/devnet-nix-2022-08-03
@@ -18,7 +20,7 @@ let
         sha256 = "sha256-3eXgDh+MVSDRDD++M/QMY+U4xS5Drs6u0TCTaRDBmrw=";
       };
 
-      inherit cargoSha256 buildAndTestSubdir;
+      inherit cargoSha256 buildAndTestSubdir cargoBuildFlags;
     };
 in
 {
@@ -26,6 +28,7 @@ in
     pname = "aptos-cli";
     cargoSha256 = "sha256-z1Qeu4/Hn0RpXfbLjTRAxy2fuWxJjagj0o6ZDr7CAkE=";
     buildAndTestSubdir = "crates/aptos";
+    cargoBuildFlags = [ "--package" "aptos" ];
   };
 
   full = buildAptosDevnet {
