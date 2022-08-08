@@ -19,7 +19,7 @@
           packages = {
             inherit (pkgs) cargo-hakari
               # aptos
-              aptos-devenv aptos aptos-cli af-cli
+              aptos-devenv aptos aptos-cli
               # sui
               sui sui-cli sui-gateway
               # move
