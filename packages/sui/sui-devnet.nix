@@ -25,7 +25,7 @@ in
 {
   full = buildSuiDevnet {
     pname = "sui-full";
-    cargoSha256 = "sha256-41NGUdYjLQ3NumUgM1qY2+PjALzHKRLeLMc3ZwLgiFs=";
+    cargoSha256 = "sha256-/Xf/5nmZt0aEvz0aEfzoSR+VCvqmD0+SWrif8jNf0Xk=";
   };
 
   cli = buildSuiDevnet {
