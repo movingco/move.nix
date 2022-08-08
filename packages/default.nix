@@ -17,8 +17,6 @@ rec {
   };
 
   move-cli = pkgs.callPackage ./move-cli.nix { };
-
   move-cli-sui = move-cli.override { buildFeatures = [ "address20" ]; };
-
   move-cli-aptos = move-cli.override { buildFeatures = [ "address32" ]; };
 }

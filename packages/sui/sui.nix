@@ -1,6 +1,6 @@
 { lib
 , llvmPackages_12
-, cargo-hakari
+, protoc
 , rustPlatform
 , fetchFromGitHub
 , pkg-config
@@ -59,6 +59,7 @@ rustPlatform.buildRustPackage rec {
 
     rustfmt
     llvm
+    protoc
   ];
 
   # see: https://github.com/aptos-labs/aptos-core/blob/36dfc6499dd576d7d2ba883b66161510ff5cbe6b/.circleci/config.yml#L241
