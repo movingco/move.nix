@@ -11,6 +11,8 @@ rec {
   aptos-cli = aptos-devnet.cli;
 
   sui = sui-devnet.full;
+  sui-cli = sui-devnet.cli;
+  sui-gateway = sui-devnet.gateway;
 
   aptos-devenv = pkgs.callPackage ./aptos-devenv.nix {
     inherit cargo-hakari;

@@ -1,6 +1,6 @@
 { lib
 , llvmPackages_12
-, protoc
+, protobuf
 , rustPlatform
 , fetchFromGitHub
 , pkg-config
@@ -15,13 +15,19 @@
 , cmake
 }:
 
-{ pname ? "sui", src, version, cargoSha256, buildAndTestSubdir ? null }:
+{ pname ? "sui"
+, src
+, version
+, cargoSha256
+, buildAndTestSubdir ? null
+, cargoBuildFlags ? [ ]
+}:
 
 with {
   inherit (llvmPackages_12) llvm clang libclang;
 };
 rustPlatform.buildRustPackage rec {
-  inherit pname buildAndTestSubdir src version cargoSha256;
+  inherit pname buildAndTestSubdir cargoBuildFlags src version cargoSha256;
   verifyCargoDeps = true;
 
   PKG_CONFIG_PATH = "${openssl.dev}/lib/pkgconfig";
@@ -59,7 +65,7 @@ rustPlatform.buildRustPackage rec {
 
     rustfmt
     llvm
-    protoc
+    protobuf
   ];
 
   # see: https://github.com/aptos-labs/aptos-core/blob/36dfc6499dd576d7d2ba883b66161510ff5cbe6b/.circleci/config.yml#L241
@@ -74,8 +80,8 @@ rustPlatform.buildRustPackage rec {
   strictDeps = true;
 
   meta = with lib; {
-    description = "A layer 1 for everyone!";
-    homepage = "https://aptoslabs.com";
+    description = "Sui is a boundless platform to build rich and dynamic on-chain assets from gaming to finance.";
+    homepage = "https://sui.io";
     license = licenses.asl20;
   };
 }
