@@ -10,8 +10,8 @@ let
     }:
     buildAptos rec {
       inherit pname;
-      # https://github.com/movingco/aptos-core/tree/devnet-nix-2022-08-08
-      version = "a78c14adf6661723469c430b50df40380d6d66bd";
+      # https://github.com/movingco/aptos-core/tree/devnet-nix-2022-08-10
+      version = "06ea700432e9a14a7c96acaa5619615108eab36e";
 
       src = fetchFromGitHub {
         owner = "movingco";
@@ -26,13 +26,13 @@ in
 {
   cli = buildAptosDevnet {
     pname = "aptos-cli";
-    cargoSha256 = "sha256-jnMrtl2Nl4fvAdF7BffW3fspOsgQptNi7K08u0VT+/8=";
+    cargoSha256 = "sha256-xDyeUjVIPZV0dN3YV57UMV/99yG/XNN5q/jcMTw1qx0=";
     buildAndTestSubdir = "crates/aptos";
     cargoBuildFlags = [ "--package" "aptos" ];
   };
 
   full = buildAptosDevnet {
     pname = "aptos";
-    cargoSha256 = "sha256-1xjx55CcW88wFdevgnJF4y1wnspu9O3ihrOGRWihNl8=";
+    cargoSha256 = "sha256-1xjx55CcW88wFdevgnJf4y1wnspu9O3ihrOGRWihNl8=";
   };
 }
