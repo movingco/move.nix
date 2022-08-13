@@ -12,6 +12,7 @@ stdenv.mkDerivation
     buildInputs = [
       nixpkgs-fmt
       move-cli-sui
+      move-ts-sui
       sui
 
       # Git is needed to be able to clone packages

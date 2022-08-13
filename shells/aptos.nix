@@ -12,6 +12,7 @@ stdenv.mkDerivation
     buildInputs = [
       nixpkgs-fmt
       move-cli-aptos
+      move-ts-aptos
       aptos
 
       # Git is needed to be able to clone packages

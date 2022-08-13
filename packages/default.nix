@@ -18,6 +18,10 @@ rec {
     inherit cargo-hakari;
   };
 
+  move-ts = pkgs.callPackage ./move-ts.nix { };
+  move-ts-sui = move-ts.override { buildFeatures = [ "address20" ]; };
+  move-ts-aptos = move-ts.override { buildFeatures = [ "address32" ]; };
+
   move-cli = pkgs.callPackage ./move-cli.nix { };
   move-cli-sui = move-cli.override { buildFeatures = [ "address20" ]; };
   move-cli-aptos = move-cli.override { buildFeatures = [ "address32" ]; };
