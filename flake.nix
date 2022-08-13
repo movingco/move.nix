@@ -17,7 +17,10 @@
         in
         {
           packages = {
-            inherit (pkgs) cargo-hakari
+            inherit (pkgs)
+              # common
+              move-cli
+              cargo-hakari
               # aptos
               aptos
               aptos-cli
@@ -29,9 +32,7 @@
               sui-cli
               sui-gateway
               move-cli-sui
-              move-ts-sui
-              # move
-              move-cli;
+              move-ts-sui;
           };
           devShells = {
             default = devShell;
