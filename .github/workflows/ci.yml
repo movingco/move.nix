@@ -35,7 +35,7 @@ jobs:
           - aptos-devenv
           - aptos
           - aptos-cli
-          - move-cli-aptos
+          - move-cli-address32
           - move-ts-aptos
           # Sui
           - sui
