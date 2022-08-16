@@ -32,7 +32,7 @@
               sui
               sui-cli
               sui-gateway
-              move-cli-sui
+              move-cli-address20
               move-ts-sui;
           };
           devShells = {

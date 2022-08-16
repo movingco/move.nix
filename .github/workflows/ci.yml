@@ -41,7 +41,7 @@ jobs:
           - sui
           - sui-cli
           - sui-gateway
-          - move-cli-sui
+          - move-cli-address20
           - move-ts-sui
     steps:
       - uses: actions/checkout@v3
