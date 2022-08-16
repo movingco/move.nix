@@ -20,19 +20,18 @@
             inherit (pkgs)
               # common
               z3
-              move-cli
               cargo-hakari
               # aptos
               aptos
               aptos-cli
               aptos-devenv
               move-ts-aptos
-              move-cli-aptos
+              move-cli-address32
               # sui
               sui
               sui-cli
               sui-gateway
-              move-cli-sui
+              move-cli-address20
               move-ts-sui;
           };
           devShells = {

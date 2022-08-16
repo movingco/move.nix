@@ -11,7 +11,7 @@ stdenv.mkDerivation
     # See: <https://github.com/move-language/move/blob/2dabc08cb115a2385d3844b681917dd3129a30fe/scripts/dev_setup.sh>
     buildInputs = [
       nixpkgs-fmt
-      move-cli-sui
+      move-cli-address20
       move-ts-sui
       sui
 

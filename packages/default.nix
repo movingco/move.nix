@@ -22,9 +22,18 @@ rec {
   move-ts-sui = move-ts.override { buildFeatures = [ "address20" ]; };
   move-ts-aptos = move-ts.override { buildFeatures = [ "address32" ]; };
 
-  move-cli = pkgs.callPackage ./move-cli.nix { };
-  move-cli-sui = move-cli.override { buildFeatures = [ "address20" ]; };
-  move-cli-aptos = move-cli.override { buildFeatures = [ "address32" ]; };
 
   z3 = pkgs.callPackage ./z3.nix { };
+
+  move-cli = pkgs.callPackage ./move-cli.nix { };
+  move-cli-address20 = pkgs.callPackage ./move-cli-wrapper.nix {
+    inherit z3;
+    name = "move-cli-address20";
+    move-cli = move-cli.override { buildFeatures = [ "address20" ]; };
+  };
+  move-cli-address32 = pkgs.callPackage ./move-cli-wrapper.nix {
+    inherit z3;
+    name = "move-cli-address32";
+    move-cli = move-cli.override { buildFeatures = [ "address32" ]; };
+  };
 }

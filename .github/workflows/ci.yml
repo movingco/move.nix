@@ -30,18 +30,17 @@ jobs:
         os: [ubuntu-latest, macos-12]
         package:
           - cargo-hakari
-          - move-cli
           # Aptos
           - aptos-devenv
           - aptos
           - aptos-cli
-          - move-cli-aptos
+          - move-cli-address32
           - move-ts-aptos
           # Sui
           - sui
           - sui-cli
           - sui-gateway
-          - move-cli-sui
+          - move-cli-address20
           - move-ts-sui
     steps:
       - uses: actions/checkout@v3
