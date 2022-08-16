@@ -20,7 +20,6 @@
             inherit (pkgs)
               # common
               z3
-              move-cli
               cargo-hakari
               # aptos
               aptos

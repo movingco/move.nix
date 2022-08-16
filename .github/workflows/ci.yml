@@ -30,7 +30,6 @@ jobs:
         os: [ubuntu-latest, macos-12]
         package:
           - cargo-hakari
-          - move-cli
           # Aptos
           - aptos-devenv
           - aptos

@@ -26,7 +26,11 @@ rec {
   z3 = pkgs.callPackage ./z3.nix { };
 
   move-cli = pkgs.callPackage ./move-cli.nix { };
-  move-cli-address20 = move-cli.override { buildFeatures = [ "address20" ]; };
+  move-cli-address20 = pkgs.callPackage ./move-cli-wrapper.nix {
+    inherit z3;
+    name = "move-cli-address20";
+    move-cli = move-cli.override { buildFeatures = [ "address20" ]; };
+  };
   move-cli-address32 = pkgs.callPackage ./move-cli-wrapper.nix {
     inherit z3;
     name = "move-cli-address32";
