@@ -34,6 +34,8 @@ buildRustPackage rec {
       ++ (lib.optionals stdenv.isAarch64 [ System ])));
   strictDeps = true;
 
+  doCheck = false;
+
   meta = with lib; {
     description =
       "CLI frontend for the Move compiler and VM";
