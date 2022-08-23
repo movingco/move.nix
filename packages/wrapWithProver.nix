@@ -1,6 +1,4 @@
-{ name
-, move-cli
-, stdenv
+{ stdenv
 , z3
 , icu
 , boogie
@@ -8,6 +6,12 @@
 , symlinkJoin
 , makeWrapper
 }:
+
+{ name
+, package
+, bin
+}:
+
 let
   installProver = !stdenv.isi686;
 in
@@ -16,7 +20,7 @@ if installProver then
   {
     inherit name;
     paths = [
-      move-cli
+      package
       z3
       icu
       boogie
@@ -24,10 +28,10 @@ if installProver then
     ];
     buildInputs = [ makeWrapper ];
     postBuild = ''
-      wrapProgram $out/bin/move \
+      wrapProgram $out/bin/${bin} \
         --set Z3_EXE ${z3}/bin/z3 \
         --set DOTNET_ROOT ${dotnet-sdk} \
         --set LD_LIBRARY_PATH ${icu}/lib \
         --set BOOGIE_EXE ${boogie}/bin/boogie
     '';
-  } else move-cli
+  } else package

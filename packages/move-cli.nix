@@ -13,18 +13,18 @@ with rustPlatform;
 
 buildRustPackage rec {
   pname = "move";
-  version = "c72541e9fe1581316f0328a411c2a2e751e9b35c";
+  version = "547c7f79d1c46dccfcb1024005d2a796be2480ec";
 
   src = fetchFromGitHub {
     owner = "move-language";
     repo = "move";
     rev = version;
-    sha256 = "sha256-jJz092Bf6Y4PqSIrcJMmvAD01886eyjR5sGuoNFVAL8=";
+    sha256 = "sha256-JRIUalkTt7bBow0LYWv5VwvVMt4msK5eBcaGLYlcaWw=";
   };
 
   inherit buildFeatures;
 
-  cargoSha256 = "sha256-NlpkfsRLt4r9bwg6x5PQUOYmQHBW/ThpF/DuEZfQQSU=";
+  cargoSha256 = "sha256-c+qrSxj4ltY1gtcLqt+TH0nfHLmS5XXfZ/R9BefwYX0=";
   verifyCargoDeps = true;
 
   nativeBuildInputs = [ pkgconfig ];
