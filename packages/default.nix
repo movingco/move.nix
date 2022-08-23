@@ -7,7 +7,6 @@ in
 rec {
   inherit cargo-hakari;
 
-
   sui = sui-devnet.full;
   sui-cli = sui-devnet.cli;
   sui-gateway = sui-devnet.gateway;
@@ -19,7 +18,6 @@ rec {
   move-ts = pkgs.callPackage ./move-ts.nix { };
   move-ts-sui = move-ts.override { buildFeatures = [ "address20" ]; };
   move-ts-aptos = move-ts.override { buildFeatures = [ "address32" ]; };
-
 
   z3 = pkgs.callPackage ./z3.nix { };
 
