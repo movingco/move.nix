@@ -7,8 +7,6 @@ in
 rec {
   inherit cargo-hakari;
 
-  aptos = aptos-devnet.full;
-  aptos-cli = aptos-devnet.cli;
 
   sui = sui-devnet.full;
   sui-cli = sui-devnet.cli;
@@ -25,15 +23,30 @@ rec {
 
   z3 = pkgs.callPackage ./z3.nix { };
 
-  move-cli = pkgs.callPackage ./move-cli.nix { };
-  move-cli-address20 = pkgs.callPackage ./move-cli-wrapper.nix {
+  wrapWithProver = pkgs.callPackage ./wrapWithProver.nix {
     inherit z3;
-    name = "move-cli-address20";
-    move-cli = move-cli.override { buildFeatures = [ "address20" ]; };
   };
-  move-cli-address32 = pkgs.callPackage ./move-cli-wrapper.nix {
-    inherit z3;
+
+  move-cli = pkgs.callPackage ./move-cli.nix { };
+  move-cli-address20 = wrapWithProver {
+    name = "move-cli-address20";
+    bin = "move";
+    package = move-cli.override { buildFeatures = [ "address20" ]; };
+  };
+  move-cli-address32 = wrapWithProver {
     name = "move-cli-address32";
-    move-cli = move-cli.override { buildFeatures = [ "address32" ]; };
+    bin = "move";
+    package = move-cli.override { buildFeatures = [ "address32" ]; };
+  };
+
+  aptos = wrapWithProver {
+    name = "aptos";
+    bin = "aptos";
+    package = aptos-devnet.full;
+  };
+  aptos-cli = wrapWithProver {
+    name = "aptos-cli";
+    bin = "aptos";
+    package = aptos-devnet.cli;
   };
 }
