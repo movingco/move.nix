@@ -11,18 +11,19 @@ with rustPlatform;
 
 buildRustPackage rec {
   pname = "move-ts";
-  version = "0.4.1";
+  version = "6928b8a44e5df6d15fca1159ea59c9689a3b9e7c";
 
   src = fetchFromGitHub {
     owner = "movingco";
     repo = "move-ts";
-    rev = "v${version}";
-    sha256 = "sha256-nGWhkm6aWACSx1ojsB/X8XU/IHhRMDCn5IWD1AzJqW4=";
+    # rev = "v${version}";
+    rev = version;
+    sha256 = "sha256-uh3mgbEZIoZgzWwtvC/Twsak7FNNCwq16r2SWr/2oBI=";
   };
 
   inherit buildFeatures;
 
-  cargoSha256 = "sha256-jVXl/QDSdSwzYkYIRK2GgFETAeOviyZhi18DZFFiIbo=";
+  cargoSha256 = "sha256-GwySAkccTAcVC7XoGxtD8yYXwfLQVGFQ1w1bRkTQDTU=";
   verifyCargoDeps = true;
 
   nativeBuildInputs = [ pkgconfig ];
