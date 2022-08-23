@@ -13,6 +13,7 @@
 , libiconv
 , darwin
 , mkShell
+, move-cli-address32
 }:
 mkShell {
   name = "aptos-devenv";
@@ -36,6 +37,7 @@ mkShell {
     openssl # libssl
 
     cargo-hakari # for workspace hack
+    move-cli-address32 # move-analyzer
   ] ++ (
     lib.optional stdenv.isDarwin ([ libiconv ]
       ++ (with darwin.apple_sdk.frameworks; [ DiskArbitration Foundation ]))

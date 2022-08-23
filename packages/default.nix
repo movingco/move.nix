@@ -11,10 +11,6 @@ rec {
   sui-cli = sui-devnet.cli;
   sui-gateway = sui-devnet.gateway;
 
-  aptos-devenv = pkgs.callPackage ./aptos-devenv.nix {
-    inherit cargo-hakari;
-  };
-
   move-ts = pkgs.callPackage ./move-ts.nix { };
   move-ts-sui = move-ts.override { buildFeatures = [ "address20" ]; };
   move-ts-aptos = move-ts.override { buildFeatures = [ "address32" ]; };
@@ -46,5 +42,9 @@ rec {
     name = "aptos-cli";
     bin = "aptos";
     package = aptos-devnet.cli;
+  };
+
+  aptos-devenv = pkgs.callPackage ./aptos-devenv.nix {
+    inherit cargo-hakari move-cli-address32;
   };
 }
