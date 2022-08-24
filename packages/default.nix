@@ -48,5 +48,6 @@ rec {
     inherit cargo-hakari move-cli-address32;
   };
 
-  rust-devenv = pkgs.callPackage ./rust-devenv.nix { };
+  cargo-workspaces = pkgs.callPackage ./cargo-workspaces.nix { };
+  rust-devenv = pkgs.callPackage ./rust-devenv.nix { inherit cargo-workspaces; };
 }

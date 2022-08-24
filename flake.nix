@@ -19,9 +19,10 @@
           packages = {
             inherit (pkgs)
               # common
-              z3
               cargo-hakari
+              cargo-workspaces
               rust-devenv
+              z3
               # aptos
               aptos
               aptos-cli

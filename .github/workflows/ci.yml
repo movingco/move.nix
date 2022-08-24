@@ -30,6 +30,7 @@ jobs:
         os: [ubuntu-latest, macos-12]
         package:
           - cargo-hakari
+          - cargo-workspaces
           - rust-devenv
           - z3
           # Aptos
