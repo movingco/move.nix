@@ -10,6 +10,7 @@ mkShell {
 
     rustup
     rust-analyzer
+    cargo-expand
     cargo-hakari
     cargo-outdated
     cargo-readme
@@ -18,8 +19,4 @@ mkShell {
     lib.optional stdenv.isDarwin ([ libiconv ]
       ++ (with darwin.apple_sdk.frameworks; [ DiskArbitration Foundation ]))
   );
-
-  packages = [
-    cargo-expand
-  ];
 }
