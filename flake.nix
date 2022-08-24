@@ -21,6 +21,7 @@
               # common
               z3
               cargo-hakari
+              rust-devenv
               # aptos
               aptos
               aptos-cli

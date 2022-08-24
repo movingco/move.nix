@@ -47,4 +47,6 @@ rec {
   aptos-devenv = pkgs.callPackage ./aptos-devenv.nix {
     inherit cargo-hakari move-cli-address32;
   };
+
+  rust-devenv = pkgs.callPackage ./rust-devenv.nix { };
 }
