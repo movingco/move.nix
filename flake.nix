@@ -21,6 +21,7 @@
               # common
               cargo-hakari
               cargo-workspaces
+              move-to-ts
               z3
               # aptos
               aptos
