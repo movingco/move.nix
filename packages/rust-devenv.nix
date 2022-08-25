@@ -3,6 +3,7 @@ with pkgs;
 mkShell {
   name = "rust-devenv";
   buildInputs = [
+    move-cli-address32
     git
 
     pkg-config
