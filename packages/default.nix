@@ -1,11 +1,8 @@
 { pkgs }:
-let
+rec {
   cargo-hakari = pkgs.callPackage ./cargo-hakari.nix { };
   sui-devnet = pkgs.callPackage ./sui/sui-devnet.nix { };
   aptos-devnet = pkgs.callPackage ./aptos/aptos-devnet.nix { };
-in
-rec {
-  inherit cargo-hakari;
 
   sui = sui-devnet.full;
   sui-cli = sui-devnet.cli;
@@ -14,12 +11,8 @@ rec {
   move-ts = pkgs.callPackage ./move-ts.nix { };
   move-ts-sui = move-ts.override { buildFeatures = [ "address20" ]; };
   move-ts-aptos = move-ts.override { buildFeatures = [ "address32" ]; };
-
   z3 = pkgs.callPackage ./z3.nix { };
-
-  wrapWithProver = pkgs.callPackage ./wrapWithProver.nix {
-    inherit z3;
-  };
+  wrapWithProver = pkgs.callPackage ./wrapWithProver.nix { };
 
   move-cli = pkgs.callPackage ./move-cli.nix { };
   move-cli-address20 = wrapWithProver {
@@ -44,10 +37,7 @@ rec {
     package = aptos-devnet.cli;
   };
 
-  aptos-devenv = pkgs.callPackage ./aptos-devenv.nix {
-    inherit cargo-hakari move-cli-address32;
-  };
-
+  aptos-devenv = pkgs.callPackage ./aptos-devenv.nix { };
   cargo-workspaces = pkgs.callPackage ./cargo-workspaces.nix { };
-  rust-devenv = pkgs.callPackage ./rust-devenv.nix { inherit cargo-workspaces; };
+  rust-devenv = pkgs.callPackage ./rust-devenv.nix { };
 }
