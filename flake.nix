@@ -21,12 +21,10 @@
               # common
               cargo-hakari
               cargo-workspaces
-              rust-devenv
               z3
               # aptos
               aptos
               aptos-cli
-              aptos-devenv
               move-ts-aptos
               move-cli-address32
               # sui
@@ -34,7 +32,11 @@
               sui-cli
               sui-gateway
               move-cli-address20
-              move-ts-sui;
+              move-ts-sui
+              # envs
+              env-aptos-dev
+              env-move
+              env-rust;
           };
           devShells = {
             default = devShell;

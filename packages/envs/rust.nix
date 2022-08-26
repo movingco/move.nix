@@ -1,3 +1,4 @@
+# Useful for when dealing with a Rust crate.
 { pkgs, cargo-hakari, cargo-workspaces }:
 with pkgs;
 mkShell {

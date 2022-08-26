@@ -1,11 +1,10 @@
-{ callPackage, fetchFromGitHub }:
+{ callPackage, fetchFromGitHub, symlinkJoin, wrapWithProver }:
 
 let
   buildAptos = callPackage ./aptos.nix { };
   buildAptosDevnet =
     { pname
     , cargoSha256
-    , buildAndTestSubdir ? null
     , cargoBuildFlags ? [ ]
     }:
     buildAptos rec {
@@ -20,19 +19,36 @@ let
         sha256 = "sha256-CFWX1LCsXYo+hVvHx7WtF6BhIf3fYs92Uj+ctqiB+G8=";
       };
 
-      inherit cargoSha256 buildAndTestSubdir cargoBuildFlags;
+      inherit cargoSha256 cargoBuildFlags;
     };
 in
+rec
 {
-  cli = buildAptosDevnet {
-    pname = "aptos-cli";
-    cargoSha256 = "sha256-j+wyBG0RINXrCLGH9ZlM+IMrPOL/yT+5WgwHW1a34cY=";
-    buildAndTestSubdir = "crates/aptos";
+  cli-no-prover = buildAptosDevnet {
+    pname = "aptos-cli-no-prover";
+    cargoSha256 = "sha256-/gVVS8iT9Bn9qH8gymvJZ4gXjleeox64cBqMU7+0sGo=";
     cargoBuildFlags = [ "--package" "aptos" ];
   };
 
-  full = buildAptosDevnet {
-    pname = "aptos";
-    cargoSha256 = "sha256-KCU7dO1XhtYwAi4EWSzZaa0cOxJ/rbLX2/dHv8+22y8=";
+  cli = wrapWithProver {
+    name = "aptos-cli";
+    bin = "aptos";
+    package = cli-no-prover;
+  };
+
+  # Aptos tools other than the Aptos CLI
+  tools = buildAptosDevnet {
+    pname = "aptos-tools";
+    cargoSha256 = "sha256-D9zEufbckNplOiDoraMm93W8VUX1zkM7pyyZW2X/+Eg=";
+    cargoBuildFlags = [
+      "--workspace"
+      "--exclude"
+      "aptos"
+    ];
+  };
+
+  full = symlinkJoin {
+    name = "aptos";
+    paths = [ cli tools ];
   };
 }

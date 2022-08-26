@@ -18,7 +18,6 @@
 , src
 , version
 , cargoSha256
-, buildAndTestSubdir ? null
 , cargoBuildFlags ? [ ]
 }:
 
@@ -26,7 +25,7 @@ with {
   inherit (llvmPackages_12) llvm clang libclang;
 };
 rustPlatform.buildRustPackage rec {
-  inherit pname buildAndTestSubdir cargoBuildFlags src version cargoSha256;
+  inherit pname cargoBuildFlags src version cargoSha256;
   verifyCargoDeps = true;
 
   PKG_CONFIG_PATH = "${openssl.dev}/lib/pkgconfig";

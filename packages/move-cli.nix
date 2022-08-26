@@ -28,7 +28,7 @@ buildRustPackage rec {
   verifyCargoDeps = true;
 
   nativeBuildInputs = [ pkgconfig ];
-  buildInputs = [ openssl zlib ] ++ lib.optionals stdenv.isDarwin
+  buildInputs = [ openssl zlib git ] ++ lib.optionals stdenv.isDarwin
     (with darwin.apple_sdk.frameworks;
     ([ IOKit Security CoreFoundation AppKit ]
       ++ (lib.optionals stdenv.isAarch64 [ System ])));

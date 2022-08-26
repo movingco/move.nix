@@ -1,3 +1,4 @@
+# Useful for working in the Aptos repo.
 { lib
 , cargo-hakari
 , openssl
