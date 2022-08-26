@@ -33,6 +33,6 @@ in
 
   full = buildAptosDevnet {
     pname = "aptos";
-    cargoSha256 = "sha256-isW5fmENLwRvis44/awcOJRw45dW5R3eUhzRz9Oox8k=";
+    cargoSha256 = "sha256-KCU7dO1XhtYwAi4EWSzZaa0cOxJ/rbLX2/dHv8+22y8=";
   };
 }
