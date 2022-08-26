@@ -19,12 +19,12 @@ buildRustPackage rec {
     owner = "move-language";
     repo = "move";
     rev = version;
-    sha256 = "sha256-JRIUalkTt7bBow0LYWv5VwvVMt4msK5eBcaGLYlcaWw=";
+    sha256 = "sha256-JutgCA1CtUNpgyy5Ny7DZh9+5f54eA2RyVul0XdedfI=";
   };
 
   inherit buildFeatures;
 
-  cargoSha256 = "sha256-c+qrSxj4ltY1gtcLqt+TH0nfHLmS5XXfZ/R9BefwYX0=";
+  cargoSha256 = "sha256-FanHIuctJfvLadRqVvgdHSibdJNXBGD6D2vBWN0tYx8=";
   verifyCargoDeps = true;
 
   nativeBuildInputs = [ pkgconfig ];
