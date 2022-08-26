@@ -26,7 +26,7 @@ in
 {
   cli = buildAptosDevnet {
     pname = "aptos-cli";
-    cargoSha256 = "sha256-o73Zph1nJ4qSyY4aTyaleAUKSHsyxUV6X2ye0YuPoe8=";
+    cargoSha256 = "sha256-j+wyBG0RINXrCLGH9ZlM+IMrPOL/yT+5WgwHW1a34cY=";
     buildAndTestSubdir = "crates/aptos";
     cargoBuildFlags = [ "--package" "aptos" ];
   };
