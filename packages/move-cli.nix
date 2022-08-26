@@ -24,7 +24,7 @@ buildRustPackage rec {
 
   inherit buildFeatures;
 
-  cargoSha256 = "sha256-FanHIuctJfvLadRqVvgdHSibdJNXBGD6D2vBWN0tYx8=";
+  cargoSha256 = "sha256-/bsfncv9v2neN7RFiyQU6yltDp1Q7O0n04pYb1zeBzA=";
   verifyCargoDeps = true;
 
   nativeBuildInputs = [ pkgconfig ];
