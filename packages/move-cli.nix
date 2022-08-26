@@ -13,7 +13,7 @@ with rustPlatform;
 
 buildRustPackage rec {
   pname = "move";
-  version = "547c7f79d1c46dccfcb1024005d2a796be2480ec";
+  version = "f20499851934cd51f81b390954a292ca1bd419b8";
 
   src = fetchFromGitHub {
     owner = "move-language";

@@ -11,13 +11,13 @@ let
     buildAptos rec {
       inherit pname;
       # https://github.com/aptos-labs/aptos-core/tree/devnet
-      version = "509f09e7868a12d031bd7caef62185aa4deebbf0";
+      version = "e1c6a5713301ed72bf3a846ab9536d002ac801d6";
 
       src = fetchFromGitHub {
         owner = "aptos-labs";
         repo = "aptos-core";
         rev = version;
-        sha256 = "sha256-McJONUmMtTqNFscSirzSrG6x+YJwHawuUvLiz3xkteQ=";
+        sha256 = "sha256-CFWX1LCsXYo+hVvHx7WtF6BhIf3fYs92Uj+ctqiB+G8=";
       };
 
       inherit cargoSha256 buildAndTestSubdir cargoBuildFlags;
@@ -26,7 +26,7 @@ in
 {
   cli = buildAptosDevnet {
     pname = "aptos-cli";
-    cargoSha256 = "sha256-o73Zph1nJ4qSyY4aTyfleAUKSHsyxUV6X2ye0YuPoe8=";
+    cargoSha256 = "sha256-o73Zph1nJ4qSyY4aTyaleAUKSHsyxUV6X2ye0YuPoe8=";
     buildAndTestSubdir = "crates/aptos";
     cargoBuildFlags = [ "--package" "aptos" ];
   };
