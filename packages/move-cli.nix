@@ -7,6 +7,7 @@
 , stdenv
 , darwin
 , buildFeatures ? [ ]
+, git
 }:
 
 with rustPlatform;
