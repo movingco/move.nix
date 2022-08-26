@@ -18,6 +18,11 @@ mkShell {
   BINDGEN_EXTRA_CLANG_ARGS =
     "-isystem ${libclang.lib}/lib/clang/${lib.getVersion clang}/include";
 
+  # Used by build.rs in the rocksdb-sys crate. If we don't set these, it would
+  # try to build RocksDB from source.
+  ROCKSDB_INCLUDE_DIR = "${rocksdb}/include";
+  ROCKSDB_LIB_DIR = "${rocksdb}/lib";
+
   buildInputs = env-rust.buildInputs ++ [
     rocksdb
     postgresql # libpq
