@@ -24,6 +24,8 @@ mkShell {
   ROCKSDB_LIB_DIR = "${rocksdb}/lib";
 
   buildInputs = env-rust.buildInputs ++ [
+    libclang
+    clang
     rocksdb
     postgresql # libpq
 
