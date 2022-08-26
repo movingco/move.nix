@@ -1,7 +1,8 @@
+# Useful for when dealing with a Rust crate.
 { pkgs, cargo-hakari, cargo-workspaces }:
 with pkgs;
 mkShell {
-  name = "rust-devenv";
+  name = "env-rust";
   buildInputs = [
     move-cli-address32
     git

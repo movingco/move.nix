@@ -1,39 +1,16 @@
 # This shell can be used for Sui projects.
 { pkgs }:
 with pkgs;
-let
-  installProver = !stdenv.isi686;
-in
-stdenv.mkDerivation
-  ({
-    name = "devshell-aptos";
+stdenv.mkDerivation {
+  name = "devshell-sui";
 
-    # See: <https://github.com/move-language/move/blob/2dabc08cb115a2385d3844b681917dd3129a30fe/scripts/dev_setup.sh>
-    buildInputs = [
-      nixpkgs-fmt
-      move-cli-address20
-      move-ts-sui
-      sui
+  buildInputs = [
+    nixpkgs-fmt
+    move-cli-address20
+    move-ts-sui
+    sui
 
-      # Git is needed to be able to clone packages
-      git
-    ] ++ (lib.optionals installProver [
-      # Move prover
-      z3
-      # TODO(igm): boogie must be installed via `dotnet tool install --global boogie`.
-      # boogie
-      icu
-      cvc5
-      dotnet-sdk
-    ]);
-  } // (if installProver then {
-    LD_LIBRARY_PATH = "${icu}/lib";
-    Z3_EXE = "${z3}/bin/z3";
-    DOTNET_ROOT = "${dotnet-sdk}";
-    shellHook = ''
-      export BOOGIE_EXE=$HOME/.dotnet/tools/boogie
-      if ! [ -f "$BOOGIE_EXE" ]; then
-        dotnet tool install --global boogie
-      fi
-    '';
-  } else { }))
+    # Git is needed to be able to clone packages
+    git
+  ];
+}

@@ -26,18 +26,12 @@ rec {
     package = move-cli.override { buildFeatures = [ "address32" ]; };
   };
 
-  aptos = wrapWithProver {
-    name = "aptos";
-    bin = "aptos";
-    package = aptos-devnet.full;
-  };
-  aptos-cli = wrapWithProver {
-    name = "aptos-cli";
-    bin = "aptos";
-    package = aptos-devnet.cli;
-  };
+  aptos-cli = aptos-devnet.cli;
+  aptos = aptos-devnet.full;
 
-  aptos-devenv = pkgs.callPackage ./aptos-devenv.nix { };
   cargo-workspaces = pkgs.callPackage ./cargo-workspaces.nix { };
-  rust-devenv = pkgs.callPackage ./rust-devenv.nix { };
+
+  env-aptos-dev = pkgs.callPackage ./envs/aptos-dev.nix { };
+  env-rust = pkgs.callPackage ./envs/rust.nix { };
+  env-move = pkgs.callPackage ./envs/move.nix { };
 }

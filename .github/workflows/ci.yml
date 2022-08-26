@@ -31,10 +31,8 @@ jobs:
         package:
           - cargo-hakari
           - cargo-workspaces
-          - rust-devenv
           - z3
           # Aptos
-          - aptos-devenv
           - aptos
           - aptos-cli
           - move-cli-address32
@@ -45,6 +43,10 @@ jobs:
           - sui-gateway
           - move-cli-address20
           - move-ts-sui
+          # Envs
+          - env-aptos-dev
+          - env-move
+          - env-rust
     steps:
       - uses: actions/checkout@v3
       - uses: cachix/install-nix-action@v17
