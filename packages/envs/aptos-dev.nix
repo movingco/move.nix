@@ -17,7 +17,7 @@
 , move-cli-address32
 }:
 mkShell {
-  name = "aptos-devenv";
+  name = "env-aptos-dev";
 
   PKG_CONFIG_PATH = "${openssl.dev}/lib/pkgconfig";
   RUST_SRC_PATH = "${rust.packages.stable.rustPlatform.rustLibSrc}";
