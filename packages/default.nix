@@ -31,7 +31,7 @@ rec {
 
   cargo-workspaces = pkgs.callPackage ./cargo-workspaces.nix { };
 
-  env-aptos-dev = pkgs.callPackage ./envs/aptos-dev.nix { };
   env-rust = pkgs.callPackage ./envs/rust.nix { };
+  env-aptos-dev = pkgs.callPackage ./envs/aptos-dev.nix { };
   env-move = pkgs.callPackage ./envs/move.nix { };
 }
