@@ -1,7 +1,7 @@
 { fetchFromGitHub
 , lib
 , rustPlatform
-, pkgconfig
+, pkg-config
 , openssl
 , zlib
 , stdenv
@@ -28,7 +28,7 @@ buildRustPackage rec {
   cargoSha256 = "sha256-/bsfncv9v2neN7RFiyQU6yltDp1Q7O0n04pYb1zeBzA=";
   verifyCargoDeps = true;
 
-  nativeBuildInputs = [ pkgconfig ];
+  nativeBuildInputs = [ pkg-config ];
   buildInputs = [ openssl zlib git ] ++ lib.optionals stdenv.isDarwin
     (with darwin.apple_sdk.frameworks;
     ([ IOKit Security CoreFoundation AppKit ]
@@ -40,7 +40,7 @@ buildRustPackage rec {
   meta = with lib; {
     description =
       "CLI frontend for the Move compiler and VM";
-    homepage = "https://diem.com";
+    homepage = "https://github.com/move-language/move";
 
     license = licenses.asl20;
   };

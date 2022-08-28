@@ -1,7 +1,7 @@
 { fetchCrate
 , lib
 , rustPlatform
-, pkgconfig
+, pkg-config
 , openssl
 , zlib
 , stdenv
@@ -28,7 +28,7 @@ buildRustPackage rec {
   LIBGIT2_SYS_USE_PKG_CONFIG = true;
   LIBSSH2_SYS_USE_PKG_CONFIG = true;
 
-  nativeBuildInputs = [ pkgconfig libssh2 ];
+  nativeBuildInputs = [ pkg-config ];
   buildInputs = [ openssl zlib libssh2 libgit2 ] ++ (
     lib.optionals stdenv.isDarwin
       (with darwin.apple_sdk.frameworks;
@@ -36,9 +36,6 @@ buildRustPackage rec {
         ++ (lib.optionals stdenv.isAarch64 [ System ])))
   );
   strictDeps = true;
-
-  # skip tests, because for some reason they fail...
-  doCheck = false;
 
   meta = with lib; {
     description =
