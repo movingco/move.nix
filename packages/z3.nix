@@ -86,6 +86,6 @@ let
     };
 in
 common {
-  version = "4.10.2";
-  sha256 = "sha256-xCDQ2PrpyU7/LzOWRgCAGI1k/HO1gAkE5iYejyeNUqw=";
+  version = "4.11.0";
+  sha256 = "sha256-ItmtZHDhCeLAVtN7K80dqyAh20o7TM4xk2sTb9QgHvk=";
 }
