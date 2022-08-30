@@ -14,6 +14,7 @@ rec {
   move-ts-aptos = move-ts.override { buildFeatures = [ "address32" ]; };
   z3 = pkgs.callPackage ./z3.nix { };
   wrapWithProver = pkgs.callPackage ./wrapWithProver.nix { };
+  move-to-ts = pkgs.callPackage ./move-to-ts.nix { };
 
   inherit (callPackages ./move-cli.nix {
     inherit (darwin.apple_sdk.frameworks) IOKit Security CoreFoundation AppKit System;
