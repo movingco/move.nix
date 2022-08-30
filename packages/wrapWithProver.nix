@@ -7,8 +7,7 @@
 , makeWrapper
 }:
 
-{ name
-, package
+{ package
 , bin
 }:
 
@@ -18,7 +17,7 @@ in
 if installProver then
   symlinkJoin
   {
-    inherit name;
+    name = "${package.name}-${bin}-with-move-prover";
     paths = [
       package
       z3
