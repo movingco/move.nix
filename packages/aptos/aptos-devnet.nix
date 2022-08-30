@@ -31,7 +31,6 @@ rec
   };
 
   cli = wrapWithProver {
-    name = "aptos-cli";
     bin = "aptos";
     package = cli-no-prover;
   };

@@ -48,12 +48,13 @@ let
         verifyCargoDeps = true;
 
         nativeBuildInputs = [ pkg-config ];
-        buildInputs = [ openssl zlib git ] ++ (lib.optionals stdenv.isDarwin [
-          IOKit
-          Security
-          CoreFoundation
-          AppKit
-        ] ++ (lib.optionals stdenv.isAarch64 [ System ]))
+        buildInputs = [ openssl zlib git ] ++ (lib.optionals stdenv.isDarwin
+          ([
+            IOKit
+            Security
+            CoreFoundation
+            AppKit
+          ] ++ (lib.optionals stdenv.isAarch64 [ System ])))
           ++ (lib.optionals installProver [
           z3
           icu
