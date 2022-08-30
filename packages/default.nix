@@ -13,6 +13,7 @@ rec {
   move-ts-aptos = move-ts.override { buildFeatures = [ "address32" ]; };
   z3 = pkgs.callPackage ./z3.nix { };
   wrapWithProver = pkgs.callPackage ./wrapWithProver.nix { };
+  move-to-ts = pkgs.callPackage ./move-to-ts.nix { };
 
   move-cli = pkgs.callPackage ./move-cli.nix { };
   move-cli-address20 = wrapWithProver {
