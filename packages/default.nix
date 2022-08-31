@@ -1,4 +1,5 @@
 { pkgs }:
+with pkgs;
 rec {
   cargo-hakari = pkgs.callPackage ./cargo-hakari.nix { };
   sui-devnet = pkgs.callPackage ./sui/sui-devnet.nix { };
@@ -15,17 +16,9 @@ rec {
   wrapWithProver = pkgs.callPackage ./wrapWithProver.nix { };
   move-to-ts = pkgs.callPackage ./move-to-ts.nix { };
 
-  move-cli = pkgs.callPackage ./move-cli.nix { };
-  move-cli-address20 = wrapWithProver {
-    name = "move-cli-address20";
-    bin = "move";
-    package = move-cli.override { buildFeatures = [ "address20" ]; };
-  };
-  move-cli-address32 = wrapWithProver {
-    name = "move-cli-address32";
-    bin = "move";
-    package = move-cli.override { buildFeatures = [ "address32" ]; };
-  };
+  inherit (callPackages ./move-cli.nix {
+    inherit (darwin.apple_sdk.frameworks) IOKit Security CoreFoundation AppKit System;
+  }) move-cli move-cli-address20 move-cli-address32;
 
   aptos-cli = aptos-devnet.cli;
   aptos = aptos-devnet.full;
