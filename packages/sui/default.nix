@@ -40,7 +40,7 @@ let
         repo = "sui";
         # https://github.com/movingco/sui/tree/sui-cargo-vendor
         rev = "27508937e1e84f0292f3075ee8c2f40a6e18ecbc";
-        sha256 = "sha256-XFex7kVC8HgGaQEFdJV8LnmkPw0F2eorLxPZ2S9+Ns0=";
+        sha256 = "sha256-4LZVgmnWoSaYVdxZ0qWg5Wos9XFhJ8+yBC1/z1bapAg=";
       };
 
       PKG_CONFIG_PATH = "${lib.getDev openssl}/lib/pkgconfig";

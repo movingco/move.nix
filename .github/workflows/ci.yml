@@ -43,8 +43,10 @@ jobs:
           - move-ts-aptos
           # Sui
           - sui
-          - sui-cli
+          - sui-node
           - sui-gateway
+          - sui-tools
+          - sui-full
           - move-cli-address20
           - move-ts-sui
           # Envs
