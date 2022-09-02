@@ -21,8 +21,8 @@
 let
   cargoHashes = {
     sui = "sha256-ojCy0Dtmvul+NiJGHKPs92pSm7fOxtwu2SpQwjl2+FI=";
-    sui-gateway = "sha256-oQabtMi7FpVCJJYeTLebL4d4fQMO6qf9Hhgj1vltR90=";
-    sui-node = "sha256-oQabtMi7FpVCJJYeTLebL4d4fQMO6qf9Hhgj1vltj90=";
+    sui-gateway = "sha256-oQabtMi7FpVCJJYeTLebL4d4fQjO6qf9Hhgj1vltR90=";
+    sui-node = "sha256-WSlMAyoZsIypfdgwDnv2vgqj04m4EgrrqK752GDuwuc=";
     sui-tools = "sha256-jtSOkhHghhnIrrInpGi8n9rWjOB73fjHEBs3lpWbr20=";
   };
 
