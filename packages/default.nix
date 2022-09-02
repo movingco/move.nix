@@ -27,5 +27,6 @@ rec {
 
   env-rust = callPackage ./envs/rust.nix { };
   env-aptos-dev = callPackage ./envs/aptos-dev.nix { };
+  env-sui-dev = callPackage ./envs/sui-dev.nix { };
   env-move = callPackage ./envs/move.nix { };
 }

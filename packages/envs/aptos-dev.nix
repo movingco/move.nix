@@ -1,4 +1,4 @@
-# Useful for working in the Aptos repo.
+# Useful for working in the Aptos/Sui repos.
 { env-rust
 , rocksdb
 , postgresql
@@ -8,6 +8,7 @@
 , libclang
 , clang
 , lib
+, cmake
 }:
 mkShell {
   name = "env-aptos-dev";
@@ -30,5 +31,6 @@ mkShell {
     postgresql # libpq
 
     move-cli-address32 # move-analyzer
+    cmake # Used by Sui
   ];
 }
