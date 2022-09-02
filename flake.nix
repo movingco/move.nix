@@ -26,7 +26,9 @@
               z3
               # aptos
               aptos
-              aptos-cli
+              aptos-node
+              aptos-tools
+              aptos-full
               move-ts-aptos
               move-cli-address32
               # sui

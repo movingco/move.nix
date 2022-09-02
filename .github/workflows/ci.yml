@@ -36,7 +36,9 @@ jobs:
           - z3
           # Aptos
           - aptos
-          - aptos-cli
+          - aptos-node
+          - aptos-tools
+          - aptos-full
           - move-cli-address32
           - move-ts-aptos
           # Sui
