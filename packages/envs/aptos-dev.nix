@@ -9,6 +9,7 @@
 , clang
 , lib
 , cmake
+, protobuf
 }:
 mkShell {
   name = "env-aptos-dev";
@@ -28,9 +29,14 @@ mkShell {
     libclang
     clang
     rocksdb
-    postgresql # libpq
 
     move-cli-address32 # move-analyzer
-    cmake # Used by Sui
+
+    # Aptos only
+    postgresql # libpq
+
+    # Sui only
+    cmake
+    protobuf
   ];
 }
