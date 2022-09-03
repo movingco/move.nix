@@ -93,7 +93,7 @@ let
 
       cargoCheckFlags = [
         "--skip"
-        "checkpoints_tests"
+        "checkpoints::checkpoint_tests"
       ];
 
       meta = with lib; {
