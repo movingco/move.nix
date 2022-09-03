@@ -91,6 +91,11 @@ let
         ]
       );
 
+      cargoCheckFlags = [
+        "--skip"
+        "checkpoints_tests"
+      ];
+
       meta = with lib; {
         description = "Sui is a boundless platform to build rich and dynamic on-chain assets from gaming to finance";
         homepage = "https://sui.io";
