@@ -87,7 +87,7 @@ let
         # Tests do not pass with the `address20` or `address32` features enabled, since
         # expected outputs were generated with no features. (16 byte addresses)
         # We should run tests on `move-cli` with no features enabled.
-        cargoCheckFeatures = [ ];
+        checkFeatures = [ ];
 
         cargoCheckFlags = lib.optionals (!installProver) [
           "--skip"
