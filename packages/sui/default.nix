@@ -91,6 +91,7 @@ let
         ]
       );
 
+      # Some of these network tests don't work in this build-- let's skip them for now.
       checkFlags = [
         "--skip=checkpoints_tests::end_to_end_with_one_byzantine"
         "--skip=checkpoints_tests::end_to_end"
