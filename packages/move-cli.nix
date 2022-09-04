@@ -89,7 +89,7 @@ let
         # We should run tests on `move-cli` with no features enabled.
         checkFeatures = [ ];
 
-        cargoCheckFlags = lib.optionals (!installProver) [
+        checkFlags = lib.optionals (!installProver) [
           "--skip"
           "prove"
         ];

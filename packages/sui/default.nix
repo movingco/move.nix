@@ -91,9 +91,9 @@ let
         ]
       );
 
-      cargoCheckFlags = [
-        "--skip"
-        "checkpoints::checkpoint_tests"
+      checkFlags = [
+        "--skip=checkpoints_tests::end_to_end_with_one_byzantine"
+        "--skip=checkpoints_tests::end_to_end"
       ];
 
       meta = with lib; {
