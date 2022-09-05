@@ -10,6 +10,7 @@ jobs:
   build:
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         os: [ubuntu-latest]
     steps:
@@ -26,6 +27,7 @@ jobs:
   build-packages:
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         os: [ubuntu-latest, macos-12]
         package:
@@ -43,8 +45,10 @@ jobs:
           - move-ts-aptos
           # Sui
           - sui
-          - sui-cli
+          - sui-node
           - sui-gateway
+          - sui-tools
+          - sui-full
           - move-cli-address20
           - move-ts-sui
           # Envs

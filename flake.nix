@@ -33,8 +33,10 @@
               move-cli-address32
               # sui
               sui
-              sui-cli
+              sui-node
               sui-gateway
+              sui-tools
+              sui-full
               move-cli-address20
               move-ts-sui
               # envs

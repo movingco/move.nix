@@ -22,18 +22,13 @@
 let
   common = { buildFeatures ? [ ] }:
     let
-      # Default to not running tests.
-      # Tests do not pass with the `address20` or `address32` features enabled, since
-      # expected outputs were generated with no features. (16 byte addresses)
-      # We should run tests on `move-cli` with no features enabled.
-      doCheck = (builtins.length buildFeatures) == 0;
       # `dotnet-sdk` only works on 64-bit systems, so we can't run
       # the Move prover on `i686`.
       installProver = !stdenv.isi686;
       # Exclude Move prover tests until z3 4.11 is on Nixpkgs
       # installProver = false;
       package = rustPlatform.buildRustPackage rec {
-        inherit buildFeatures doCheck;
+        inherit buildFeatures;
 
         pname = "move";
         version = "unstable-2022-08-28";
@@ -45,7 +40,6 @@ let
         };
 
         cargoSha256 = "sha256-BTbChMtwSD5GIHLXUaEMlk3PMMh7jgR9yWk2W4J4El8=";
-        verifyCargoDeps = true;
 
         nativeBuildInputs = [ pkg-config ];
         buildInputs = [ openssl zlib git ] ++ (lib.optionals stdenv.isDarwin
@@ -64,7 +58,7 @@ let
 
         # Set $MOVE_HOME to $TMPDIR to prevent tests from writing to the home directory.
         preCheck = ''
-          export MOVE_HOME=$TMPDIR
+          export MOVE_HOME=$TMPDIR/.move
           ${lib.optionalString installProver ''
             export BOOGIE_EXE=${boogie}/bin/boogie
             export Z3_EXE=${z3}/bin/z3
@@ -89,7 +83,13 @@ let
           "--exclude"
           "move-prover"
         ]);
-        cargoCheckFlags = lib.optionals (!installProver) [
+
+        # Tests do not pass with the `address20` or `address32` features enabled, since
+        # expected outputs were generated with no features. (16 byte addresses)
+        # We should run tests on `move-cli` with no features enabled.
+        checkFeatures = [ ];
+
+        checkFlags = lib.optionals (!installProver) [
           "--skip"
           "prove"
         ];

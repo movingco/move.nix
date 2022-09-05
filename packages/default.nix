@@ -4,10 +4,6 @@ rec {
   cargo-hakari = callPackage ./cargo-hakari.nix { };
   sui-devnet = callPackage ./sui/sui-devnet.nix { };
 
-  sui = sui-devnet.full;
-  sui-cli = sui-devnet.cli;
-  sui-gateway = sui-devnet.gateway;
-
   move-ts = callPackage ./move-ts.nix { };
   move-ts-sui = move-ts.override { buildFeatures = [ "address20" ]; };
   move-ts-aptos = move-ts.override { buildFeatures = [ "address32" ]; };
@@ -18,6 +14,10 @@ rec {
   inherit (callPackages ./aptos {
     inherit (darwin.apple_sdk.frameworks) DiskArbitration Foundation;
   }) aptos aptos-node aptos-tools aptos-full;
+
+  inherit (callPackages ./sui {
+    inherit (darwin.apple_sdk.frameworks) DiskArbitration Foundation;
+  }) sui sui-gateway sui-node sui-tools sui-full;
 
   inherit (callPackages ./move-cli.nix {
     inherit (darwin.apple_sdk.frameworks) IOKit Security CoreFoundation AppKit System;
