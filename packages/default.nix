@@ -1,7 +1,6 @@
 { pkgs }:
 with pkgs;
 rec {
-  cargo-hakari = callPackage ./cargo-hakari.nix { };
   sui-devnet = callPackage ./sui/sui-devnet.nix { };
 
   move-ts = callPackage ./move-ts.nix { };
