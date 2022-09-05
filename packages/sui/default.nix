@@ -83,13 +83,11 @@ let
       buildInputs = [
         rocksdb
         openssl # libssl
-      ] ++ (
-        lib.optional stdenv.isDarwin [
-          libiconv
-          DiskArbitration
-          Foundation
-        ]
-      );
+      ] ++ lib.optionals stdenv.isDarwin [
+        libiconv
+        DiskArbitration
+        Foundation
+      ];
 
       # Some of these network tests don't work in this build-- let's skip them for now.
       checkFlags = [
