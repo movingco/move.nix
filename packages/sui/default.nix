@@ -95,6 +95,7 @@ let
       checkFlags = [
         "--skip=end_to_end_with_one_byzantine"
         "--skip=end_to_end"
+        "--skip=node_sync::node_follower::test::test_follower"
       ];
 
       meta = with lib; {
