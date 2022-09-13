@@ -6,7 +6,7 @@ rec {
   move-ts = callPackage ./move-ts.nix { };
   move-ts-sui = move-ts.override { buildFeatures = [ "address20" ]; };
   move-ts-aptos = move-ts.override { buildFeatures = [ "address32" ]; };
-  z3 = callPackage ./z3.nix { };
+  z3 = z3_4_11;
   wrapWithProver = callPackage ./wrapWithProver.nix { };
   move-to-ts = callPackage ./move-to-ts.nix { };
 
@@ -21,8 +21,6 @@ rec {
   inherit (callPackages ./move-cli.nix {
     inherit (darwin.apple_sdk.frameworks) IOKit Security CoreFoundation AppKit System;
   }) move-cli move-cli-address20 move-cli-address32;
-
-  cargo-workspaces = callPackage ./cargo-workspaces.nix { };
 
   env-rust = callPackage ./envs/rust.nix { };
   env-aptos-dev = callPackage ./envs/aptos-dev.nix { };
