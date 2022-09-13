@@ -19,11 +19,8 @@
           packages = {
             inherit (pkgs)
               # common
-              cargo-hakari
-              cargo-workspaces
               move-to-ts
               move-cli
-              z3
               # aptos
               aptos
               aptos-node
